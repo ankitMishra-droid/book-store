@@ -116,7 +116,6 @@ class BookStore {
                 if (data.data.data.length === 0) {
                     this.showEmpty();
                 } else {
-                    console.log(data.data);
                     this.displayBooks(data.data.data);
                     this.updateBooksCount(data.data.data.length);
                     this.setUpPagination(data.data)
@@ -173,8 +172,7 @@ class BookStore {
             return;
         }
 
-        const totalPage = Math.ceil((data.totalItems || 100) / this.limit);
-        this.totalPages = totalPage;
+        this.totalPages = data.totalPages;
 
         let paginationHTML = "";
 
@@ -186,15 +184,17 @@ class BookStore {
         `
 
         // page numbers
-        const startPage = data.page;
+        const startPage = Math.max(1, this.currentPage - 2);
         const endPage = Math.min(this.totalPages, startPage + 4)
 
         for(let i = startPage; i <= endPage; i++){
-            paginationHTML += `
-                <button class="page-btn ${i === this.currentPage ? 'active' : ''}" onclick="bookStore.goToPage(${i})">
-                    ${i}
-                </button>
-            `;
+            if(this.currentPage < endPage){
+                paginationHTML += `
+                    <button class="page-btn ${i === this.currentPage ? 'active' : ''}" onclick="bookStore.goToPage(${i})">
+                        ${i}
+                    </button>
+                `;
+            }
         }
 
         // next button
