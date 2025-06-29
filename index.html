@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Online Book Store">
+  <title>Online Book Store</title>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/27cef55a53.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    BookHub
+                </a>
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home"><i class="fa fa-home"></i>Home</a></li>
+                    <li><a href="#home"><i class="fa fa-info-circle"></i>About</a></li>
+                    <li><a href="#home"><i class="fa fa-book-open"></i>Genre</a></li>
+                    <li><a href="#home"><i class="fa fa-envelope"></i>Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="search-section">
+            <div class="container">
+                <h1 class="search-title">Discover Your Next Great Read</h1>
+                <p class="search-subtitle">Explore thousands of books from various genres and authors</p>
+                
+                <div class="search-container">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search for books, authors, or topics..." autocomplete="off">
+                    <button class="search-btn" id="searchBtn">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="books-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Books</h2>
+                    <span class="books-count" id="booksCount"></span>
+                </div>
+
+                <div id="loadingState" class="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Loading amazing books for you...</p>
+                </div>
+
+                <div id="errorState" class="error-message" style="display: none;">
+                    <div class="error-icon">
+                        <i class="fa fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Oops! Something went wrong</h3>
+                    <p>We couldn't load the books right now. please try again.</p>
+                    <button class="retry-btn" id="retryBtn">Try Again</button>
+                </div>
+
+                <div id="emptyState" class="empty-state" style="display: none;">
+                    <div class="empty-icon">
+                        <i class="fas fa-search"></i>
+                        <h3>No books found.</h3>
+                        <p>Please correct your search term and retry to search.</p>
+                    </div>
+                </div>
+
+                <div class="books-grid" id="booksGrid"></div>
+                <div class="pagination" id="pagination" style="display: none;"></div>
+            </div>
+        </section>
+    </main>
+    <script src="js/script.js"></script>
+</body>
+</html>
